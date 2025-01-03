@@ -1,7 +1,7 @@
 /*
  *       Author :   Mehedi Hasan 
- *       Created:   Fri 03.Jan.2025 07:57:32
- *       File   :   B_Kevin_and_Permutation.cpp
+ *       Created:   Fri 03.Jan.2025 08:27:25
+ *       File   :   C_Kevin_and_Binary_Strings.cpp
 */
 
 #include <bits/stdc++.h>
@@ -199,23 +199,35 @@ const int mod = 1e9 + 7;
 const ll INF = 1e14;
 const int mxN = 1e6 + 10;
 const int N = 1e3 + 10;
-int n,k;
+int n,m;
 
 void solve() 
 {
-    read(n,k);
-    vt<int> a;
-    int left = 1 , right = n;
+    string s;
+    read(s);
+
+    int n = s.length(), cnt = 0;
     FOR(n) {
-        if( (i + 1) % k == 0) {
-            a.pb(left);
-            left++;
+        if(s[i] == '0') {
+            break;
         } else {
-            a.pb(right);
-            right--;
+            cnt += 1;
         }
     }
-    print(a);
+    
+    if(cnt == n) {
+        cnt = n - 1;
+    }
+    int m = cnt - 1;
+    for(int i = cnt; i < n && m >=0; i++, m--) {
+            if(s[i] == '1') {
+                break;
+            }
+           
+    }
+    m += 1;
+    print(1, n, m+1, m+n-cnt);
+
 }
 
 int main() {
